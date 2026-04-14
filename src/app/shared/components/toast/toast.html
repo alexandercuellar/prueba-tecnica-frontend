@@ -1,0 +1,36 @@
+<div *ngIf="visible()"
+     class="fixed inset-0 bg-[#0f172a]/40 backdrop-blur-md z-50 flex items-center justify-center p-4">
+
+  <div class="bg-white w-full max-w-md rounded-2xl shadow-xl flex flex-col items-center text-center p-10 relative">
+
+    <div class="absolute top-0 left-0 w-full h-1 bg-[#002045] rounded-t-2xl"></div>
+
+    <div class="mb-6 p-5 bg-[#e6eefc] rounded-2xl flex items-center justify-center">
+      <span class="material-symbols-outlined text-[#002045]"
+            style="font-size: 48px;">
+        check_circle
+      </span>
+    </div>
+
+    <div class="space-y-2 mb-8">
+      <h2 class="text-[#002045] text-xl font-bold">
+        {{ title() }}
+      </h2>
+
+      <p class="text-gray-500 text-sm px-4">
+        {{ message() }}
+      </p>
+    </div>
+
+    <button
+      (click)="close()"
+      class="w-full py-3 bg-[#002045] text-white font-semibold rounded-lg shadow-md hover:opacity-90 transition">
+      Entendido
+    </button>
+
+    <p class="mt-6 text-[10px] uppercase tracking-widest text-gray-400 font-bold">
+      Sistema de Gestión Académica Inter Rapidísimo
+    </p>
+
+  </div>
+</div>

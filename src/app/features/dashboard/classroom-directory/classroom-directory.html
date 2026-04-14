@@ -1,0 +1,55 @@
+<div class="p-6">
+  <h1 class="text-3xl font-bold text-[#002045]">
+    Inscripción de Materias
+  </h1>
+
+  <p class="text-gray-500 mt-2 mb-6">
+    Selecciona las materias que deseas cursar en el periodo académico actual.
+  </p>
+
+  <div class="bg-[#dbe4f0] p-6 rounded-xl flex justify-between items-center mb-8">
+    <div class="flex gap-8 items-center">
+      <div>
+        <p class="text-xs text-gray-600">Créditos totales</p>
+        <p class="text-xl font-bold"> {{ totalCredits }} / 9</p>
+      </div>
+    </div>
+    <button (click)="registerSubjects()" [disabled]="selectedSubjects.length === 0"
+      class="px-6 py-3 rounded-lg font-semibold shadow-md transition" [ngClass]="selectedSubjects.length > 0
+    ? 'bg-[#002045] text-white hover:opacity-90'
+    : 'bg-gray-300 text-gray-500 cursor-not-allowed'">
+      Registrar Materias
+    </button>
+
+  </div>
+
+  <div class="grid grid-cols-3 gap-6">
+    <div *ngFor="let subject of subjects" class="bg-white p-5 rounded-xl shadow-sm border" [ngClass]="isSelected(subject)
+        ? 'border-2 border-[#002045] bg-white relative'
+        : 'bg-white border'">
+      <div *ngIf="isSelected(subject)"
+        class="absolute top-3 right-3 bg-[#002045] text-white w-6 h-6 rounded-full flex items-center justify-center">
+        ✓
+      </div>
+      <div class="flex justify-between items-center mb-3">
+        <span class="text-xs bg-gray-200 px-2 py-1 rounded">{{ subject.code }}</span>
+        <span class="text-xs text-gray-500"> {{ subject.credits }} Credits</span>
+      </div>
+
+      <h3 class="font-semibold text-lg mb-2">
+        {{ subject.name }}
+      </h3>
+
+      <div class="flex justify-between items-center">
+        <button (click)="toggleSubject(subject)" class="w-10 h-10 flex items-center justify-center rounded-lg"
+          [ngClass]="isSelected(subject)
+              ? 'bg-[#002045] text-white'
+              : 'border border-[#002045]'">
+          {{ isSelected(subject) ? '✓' : '+' }}
+        </button>
+      </div>
+    </div>
+
+  </div>
+</div>
+<app-toast #toast></app-toast>
